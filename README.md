@@ -40,6 +40,7 @@ Grant the required permissions so that the container can access and modify the v
 chown -R 1000:1000 n8n-data
 chmod -R 775 n8n-data
 
+
 5. Create the .env File
 
 Create a .env file in the n8n-server directory with the following content:
@@ -53,6 +54,7 @@ N8N_PORT=5678
 N8N_PROTOCOL=http
 N8N_SECURE_COOKIE=false  # Temporarily disable secure cookie to avoid HTTP access issues
 NODE_ENV=production
+
 
 
 🔐 Important: Replace Your-User, Your-Password, and Your-IP-Server with your actual credentials and server IP.
