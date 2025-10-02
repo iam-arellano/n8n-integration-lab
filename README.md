@@ -1,81 +1,80 @@
-🚀 n8n Installation Guide (Docker)
+# 🚀 n8n Docker Installation Guide
 
-This guide helps you set up n8n
- – a powerful workflow automation tool – using Docker in a few simple steps.
+This project sets up **n8n** – a powerful workflow automation tool – using **Docker** with authentication and persistent data storage.
 
-📦 Prerequisites
+---
 
-Install Docker
- and Docker Compose
- on your machine.
+## 📦 Prerequisites
 
-🛠️ Installation Steps
-1. Install Docker
+Make sure the following are installed on your machine:
 
-Make sure Docker is installed and running:
+- [Docker](https://docs.docker.com/get-docker/)
+- [Docker Compose](https://docs.docker.com/compose/install/)
 
+Check installation:
+
+```bash
 docker --version
 docker compose version
 
 
-If not installed, follow the Docker installation guide
-.
-
-2. Create Project Directory
-
-Create a directory to host the n8n project:
+🛠️ Installation Steps
+1. Clone or Create Project Directory
 
 mkdir n8n-server && cd n8n-server
 
-3. Create a Persistent Data Directory
 
-To ensure data persists across container restarts, create a separate volume directory:
+2. Create Persistent Data Directory
 
 mkdir n8n-data
 
-4. Set Correct Permissions
-
-Grant the required permissions so that the container can access and modify the volume:
+3. Set Permissions
 
 chown -R 1000:1000 n8n-data
 chmod -R 775 n8n-data
 
+4. Create .env File
 
-5. Create the .env File
+Create a .env file with the following contents:
 
-Create a .env file in the n8n-server directory with the following content:
-
-# n8n Configuration
+# Basic Auth
 N8N_BASIC_AUTH_ACTIVE=true
-N8N_BASIC_AUTH_USER=Your-User
-N8N_BASIC_AUTH_PASSWORD=Your-Password
-N8N_HOST=Your-IP-Server
+N8N_BASIC_AUTH_USER=your-username
+N8N_BASIC_AUTH_PASSWORD=your-password
+
+# Server Settings
+N8N_HOST=your-server-ip
 N8N_PORT=5678
 N8N_PROTOCOL=http
-N8N_SECURE_COOKIE=false  # Temporarily disable secure cookie to avoid HTTP access issues
+N8N_SECURE_COOKIE=false
+
+# Environment
 NODE_ENV=production
 
+⚠️ Replace your-username, your-password, and your-server-ip with your actual credentials and IP.
 
+5. Create docker-compose.yml
 
-🔐 Important: Replace Your-User, Your-Password, and Your-IP-Server with your actual credentials and server IP.
+6. Start n8n
 
-
-6. Create docker-compose.yml
-
-In the same directory, create a file named docker-compose.yml and paste your Docker configuration inside.
-
-
-7. Start n8n
-
-Launch the container with Docker Compose:
+Run:
 
 docker compose up -d
 
 
-Once the container is running, access the n8n interface in your browser:
+7. Access n8n
 
-http://Your-IP-Server:5678
+Open your browser and go to:
 
-✅ Done!
+http://your-server-ip:5678
 
-You now have n8n running via Docker with authentication and persistent storage.
+
+✅ Success!
+
+You now have:
+
+🔐 Basic authentication
+
+💾 Persistent data storage
+
+🚀 n8n running in Docker
